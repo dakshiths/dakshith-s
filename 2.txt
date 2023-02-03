@@ -1,5 +1,74 @@
-good morning
-good evening
-printf("hello i'm dakshith");
-printf("from ISE branch");
+Program
+#include<stdio.h> #include<stdlib.h> #include<string.h>
+typedef struct node {
+char id[10],name[10],branch[15],special[15]; struct node *llink;
+struct node *rlink;
+}NODE;
+NODE *Top=NULL,*Front=NULL,*Rear=NULL;
+NODE* read() {
+NODE *new; new=(NODE*)malloc(sizeof(NODE)); new->llink=NULL; new->rlink=NULL;
+printf("Enter ID\n"); scanf("%s",new->id);
+printf("Enter NAME\n"); scanf("%s",new->name);
+printf("Enter BRANCH\n"); scanf("%s",new->branch); printf("Enter SPECIALIZATION\n"); scanf("%s",new->special);
+return new;
+ }
 
+void DLLStack() {
+NODE *temp;
+int n,i;
+printf("Enter the number of professor nodes to be created in the DLL Stack\n"); scanf("%d",&n);
+for(i=0;i<n;i++){
+printf("Professor %d Details\n",i+1); temp=read();
+if(Top==NULL) {
+Top=temp; }
+else {
+} }
+temp->rlink=Top; Top->llink=temp; Top=temp;
+printf("DLL Stack of Professors created\n"); }
+void DLLQueue() {
+NODE *temp;
+int n,i;
+printf("Enter the number of professor nodes to be created in the DLL Queue\n"); scanf("%d",&n);
+for(i=0;i<n;i++){
+printf("Professor %d Details\n",i+1); temp=read();
+if(Front==NULL)
+{
+Front=temp;
+Rear=temp; }
+else {
+} }
+Rear->rlink=temp; temp->llink=Rear; Rear=temp;
+printf("DLL Queue of Professors created\n"); }
+void DisplayandCountStack(){ NODE *temp;
+
+int count=0;
+temp=Top;
+printf("Linked Stack of Professors\n"); printf("ID\tNAME\tBRANCH\tSPECIALIZATION"); while(temp!=NULL){
+printf("%s\t%s\t%s\t%s\n",temp->id,temp->name,temp->branch,temp->special); count++;
+temp=temp->rlink;
+}
+printf("Total number of nodes in the DLL stack is %d\n",count); }
+void DisplayandCountQueue(){ NODE *temp;
+int count=0;
+temp=Front;
+printf("Linked Queue of Professors\n"); printf("ID\tNAME\tBRANCH\tSPECIALIZATION"); while(temp!=NULL){
+printf("%s\t%s\t%s\t%s\n",temp->id,temp->name,temp->branch,temp->special); count++;
+temp=temp->rlink;
+}
+printf("Total number of nodes in the DLL Queue is %d\n",count); }
+void main() {
+int choice; while(1)
+{
+printf("1.Create DLL Stack...\n2. Create DLL Queue...\n3.Display and Count nodes in DLL Stack...\n4. Display and Count nodes in DLL Queue...\n5.Exit...\n");
+} }
+}
+printf("Enter Your Choice:\n"); scanf("%d",&choice); switch(choice)
+{
+case 1: DLLStack();
+case 2: DLLQueue();
+case 3: DisplayandCountStack();
+case 4: DisplayandCountQueue();
+case 5: exit(0);
+default: printf("\n\n\n\tEnter proper Choice....");
+break; break; break; break;
+}}
